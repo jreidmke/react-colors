@@ -14,3 +14,7 @@ function App() {
 }
 
 export default App;
+
+export const colors = ['red', 'green', 'blue'];
+
+App.defaultProps = { colors };
