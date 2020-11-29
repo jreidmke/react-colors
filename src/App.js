@@ -1,9 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
+import { BrowserRouter, Route, Redirect, useParams } from "react-router-dom";
+import ColorList from './ColorList';
+import ColorPage from './ColorPage';
+import ColorForm from './ColorForm.js';
 
 function App() {
+  const [colors, setColors] = useState(['red', 'green', 'blue'])
+
+  const addColor = (color) => {
+    setColors([...colors, color.color]);
+  }
+
   return (
     <div className="App">
+      <BrowserRouter>
+        <ColorForm createColor={addColor}/>
+        <Route exact path="/colors">
+          {colors.map(c => <ColorList name={String(c)}/>)}
+        </Route>
+        <Route exact path="/colors/:name">
+          <ColorPage colors={colors}/>
+        </Route>
+      </BrowserRouter>
       {/* Be sure to show a list of colors at /colors */}
 
       {/* Then there should be routing for a form that allows you to create a new color */}
@@ -14,7 +34,3 @@ function App() {
 }
 
 export default App;
-
-export const colors = ['red', 'green', 'blue'];
-
-App.defaultProps = { colors };
