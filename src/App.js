@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <ColorForm createColor={addColor}/>
         <Route exact path="/colors">
+        <ColorForm createColor={addColor}/>
           {colors.map(c => <ColorList name={String(c)}/>)}
         </Route>
         <Route exact path="/colors/:name">
