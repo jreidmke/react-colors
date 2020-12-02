@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import ColorList from './ColorList';
 import ColorPage from './ColorPage';
 import ColorForm from './ColorForm.js';
@@ -15,6 +15,8 @@ function App() {
 
   return (
     <div className="App">
+      <Switch>
+
         <Route exact path="/colors">
         <ColorForm createColor={addColor}/>
           {colors.map(c => <ColorList name={String(c)}/>)}
@@ -23,6 +25,7 @@ function App() {
           <ColorPage colors={colors}/>
         </Route>
         <Redirect to="/colors"/>
+      </Switch>
     </div>
   );
 }
