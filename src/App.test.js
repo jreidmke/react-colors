@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event'
 
 
-const homePageRend = render(
+let homePageRend = render(
   <MemoryRouter initialEntries={['/colors']}>
     <App/>
   </MemoryRouter>
@@ -29,7 +29,7 @@ test('matches snapshot', () => {
   expect(asFragment()).toMatchSnapshot();
 })
 
-test('links take user to color details page', () => { //right here, I wasn't able to use homePageRend for some reason
+test('links take user to color details page', () => {
   const {getByText} = render(
     <MemoryRouter initialEntries={['/colors']}>
       <App/>
