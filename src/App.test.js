@@ -42,7 +42,7 @@ test('links take user to color details page', () => { //right here, I wasn't abl
   expect(getByText('Add Color')).toBeInTheDocument();
 })
 
-test('links return user home', () => {//here, it won't let me start on /colors/red. is it a problem with queryParams?
+test('links return user home', () => {//here, it won't let me start on /colors/red. is it a problem with params?
   const {getByText} = render(
     <MemoryRouter initialEntries={['/colors/red']}>
       <App/>
