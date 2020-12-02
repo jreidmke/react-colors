@@ -26,13 +26,13 @@ const ColorForm = ({createColor}) => {
     return(
         <div>
             <form onSubmit={input}>
-                <label htmlFor='color'>Color</label>
                 <input
                 onChange={handleChange}
                 type='text'
                 name='color'
                 value={formData.color}
-                id='color'/>
+                id='color'
+                placeholder='Color'/>
                 <button id='newTodoBtn'>Add Color</button>
             </form>
         </div>
