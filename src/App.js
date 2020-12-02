@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
-import { BrowserRouter, Route, Redirect, useParams } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import ColorList from './ColorList';
 import ColorPage from './ColorPage';
 import ColorForm from './ColorForm.js';
@@ -15,7 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <Route exact path="/colors">
         <ColorForm createColor={addColor}/>
           {colors.map(c => <ColorList name={String(c)}/>)}
@@ -23,14 +22,15 @@ function App() {
         <Route exact path="/colors/:name">
           <ColorPage colors={colors}/>
         </Route>
-      </BrowserRouter>
-      {/* Be sure to show a list of colors at /colors */}
-
-      {/* Then there should be routing for a form that allows you to create a new color */}
-
-      {/* This means the color pages themselves will have to be abstracted. I could actually just do a css thing. Or no, forget that. I would do inline styling with a prop for background color. Cool */}
+        <Redirect to="/colors"/>
     </div>
   );
 }
 
 export default App;
+
+      {/* Be sure to show a list of colors at /colors */}
+
+      {/* Then there should be routing for a form that allows you to create a new color */}
+
+      {/* This means the color pages themselves will have to be abstracted. I could actually just do a css thing. Or no, forget that. I would do inline styling with a prop for background color. Cool */}
